@@ -1,0 +1,215 @@
+---
+const title = "Projects — Alex Anokhin";
+const description = "Research, publications, and open source projects by Alex Anokhin.";
+
+const projects = [
+  {
+    name: "agent-security-skill",
+    href: "https://github.com/olanokhin/agent-security-skill",
+    summary: "OWASP-aligned AI security review skill for coding agents.",
+    desc: "Portable security review skill for Claude Code, Codex, Cursor, Copilot, and Windsurf. Packages OWASP LLM 2025, GenAI, and agentic security guidance into instructions that coding agents can apply during code generation, edits, and PR review. Covers 33 categories across LLM, RAG, MCP, tool, memory, permission, approval-flow, and orchestration risks.",
+    tag: "AI Security",
+    meta: "Python · MIT · 33 checks · 5 agent surfaces",
+    links: []
+  },
+  {
+    name: "ATA Protocol",
+    href: "https://github.com/olanokhin/ata-protocol",
+    summary: "Session-layer attestation for who authorized communication.",
+    desc: "Authorization Type Attestation protocol for agentic communication systems. TLS secures the channel; ATA identifies the class of party that authorized the session. The draft targets H2H, H2AI, AI2H, and AI2AI communication states across TLS, QUIC, MLS, WebRTC, MCP, and A2A-style systems without replacing identity layers such as mTLS, OAuth, SPIFFE, or FIDO2.",
+    tag: "Protocol",
+    meta: "Python · Apache-2.0 · draft-anokhin-ata-00",
+    links: [
+      { label: "HF Demo", href: "https://huggingface.co/spaces/olanokhin/ata-protocol-demo", kind: "hf" }
+    ]
+  },
+  {
+    name: "bitplane-ann",
+    href: "https://github.com/olanokhin/bitplane-ann",
+    summary: "Resolution Capacity objective for progressive ANN search.",
+    desc: "English repo and PDF research artifact for the June 2026 paper \"Resolution Capacity: Beyond Reconstruction MSE for Progressive Approximate Nearest-Neighbor Search\". Shows why reconstruction MSE is the wrong objective for progressive RAG retrieval, introduces Resolution Capacity, compares Hadamard and PCA rotations, includes Python reference experiments, Rust-backed 25k/1M validation, SAQ comparison notes, and R6 beam+rerank evidence.",
+    tag: "Research Artifact",
+    meta: "Python · Apache-2.0 code · CC BY 4.0 paper · DOI",
+    links: [
+      { label: "DOI", href: "https://doi.org/10.5281/zenodo.20517605", kind: "doi" }
+    ]
+  },
+  {
+    name: "CPAR Framework",
+    href: "https://github.com/olanokhin/cpar-framework",
+    summary: "Blind iterative peer review by a cross-provider AI panel.",
+    desc: "Cross-Provider Adversarial Review framework where independent AI reviewers from different providers review a document blindly across iterations until consensus convergence. The design composes model strengths through the document as shared medium, uses web-grounded validation each round, and reduces herding, single-model blind spots, and default complimentary bias.",
+    tag: "Multi-Agent Review",
+    meta: "Python · Gradio · Apache-2.0 · working system + benchmarks",
+    links: [
+      { label: "HF Demo", href: "https://huggingface.co/spaces/olanokhin/cpar-framework", kind: "hf" }
+    ]
+  },
+  {
+    name: "hnsw-turboquant-glove",
+    href: "https://github.com/olanokhin/hnsw-turboquant-glove",
+    summary: "TurboQuant-style HNSW scaling curve on GloVe-200.",
+    desc: "Benchmark and live demo for vector compression on real GloVe-200 embeddings. The app normalizes vectors, applies randomized Hadamard rotation, fits Lloyd-Max scalar codebooks for 1, 2, 4, 6, and 8 bits, rebuilds HNSW, and plots Recall@10 against compression. The practical result: 8-bit is the safe setting, 6-bit is aggressive but usable, and 4-bit needs reranking.",
+    tag: "Vector Search",
+    meta: "Python · Gradio · MIT · Hugging Face Space",
+    links: [
+      { label: "HF Demo", href: "https://huggingface.co/spaces/olanokhin/hnsw-turboquant-glove", kind: "hf" }
+    ]
+  },
+  {
+    name: "RCI — Recursive Convergent Inference",
+    href: "https://github.com/olanokhin/rci-inference",
+    summary: "Bottom-up MoE expansion until output convergence.",
+    desc: "Recursive Convergent Inference proposes dynamic module expansion for neural inference: start from a minimal active expert subset, expand through an affinity graph, and stop when the model's next-token distribution converges. Evaluated on OLMoE-1B-7B across 150 reasoning tasks, with the notable finding that the model's computational demand diverges from human difficulty labels.",
+    tag: "Inference Research",
+    meta: "Jupyter · Apache-2.0 · Colab reproducible",
+    links: [
+      { label: "Colab", href: "https://colab.research.google.com/drive/1hKGM_matDR-JZb-qk20x2gQ3aYiovhqx?usp=sharing", kind: "colab" }
+    ]
+  }
+];
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href="https://olanokhin.com/projects" />
+  <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#08090b; --surface:#0f1114; --border:rgba(255,255,255,.07);
+      --accent:#00e5c3; --accent2:#005c4e; --text:#e8eaed; --muted:#5a6070; --muted2:#8892a0; --tag-bg:rgba(0,229,195,.07);
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'JetBrains Mono', monospace; min-height: 100vh; }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 32px; height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,9,11,.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; color: #fff; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--accent); }
+    main { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 116px 24px 100px; }
+    .eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800; line-height: 1.05; color: #fff; }
+    .subtitle { margin-top: 20px; font-size: 12px; color: var(--muted2); line-height: 1.9; max-width: 620px; }
+    .grid { display: grid; gap: 12px; margin-top: 48px; }
+    .card {
+      border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+      color: inherit; overflow: hidden; transition: border-color .2s, background .2s;
+    }
+    .card:hover, .card[open] { border-color: rgba(0,229,195,.25); background: rgba(0,229,195,.03); }
+    .card summary {
+      list-style: none; cursor: pointer; padding: 20px 24px;
+      display: grid; grid-template-columns: 1fr auto auto; align-items: flex-start; gap: 16px;
+    }
+    .card summary::-webkit-details-marker { display: none; }
+    .card summary:focus-visible { outline: 1px solid var(--accent); outline-offset: -4px; }
+    .summary { margin-top: 6px; font-size: 11px; color: var(--muted2); line-height: 1.65; }
+    .chevron {
+      width: 24px; height: 24px; border: 1px solid var(--border); border-radius: 6px;
+      display: inline-grid; place-items: center; color: var(--muted2); transition: transform .2s, color .2s, border-color .2s;
+    }
+    .chevron svg { width: 13px; height: 13px; }
+    .card[open] .chevron { transform: rotate(180deg); color: var(--accent); border-color: rgba(0,229,195,.25); }
+    .panel {
+      padding: 0 24px 22px; display: grid; gap: 16px;
+      border-top: 1px solid rgba(255,255,255,.045);
+    }
+    .desc { padding-top: 18px; font-size: 11px; color: var(--muted2); line-height: 1.75; max-width: 680px; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .github-btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 13px; border: 1px solid rgba(0,229,195,.25);
+      border-radius: 6px; color: var(--accent); background: var(--tag-bg); font-size: 11px; text-decoration: none;
+      transition: border-color .2s, background .2s, transform .15s;
+    }
+    .github-btn:hover { border-color: var(--accent); background: rgba(0,229,195,.1); transform: translateY(-1px); }
+    .github-btn svg { width: 13px; height: 13px; }
+    .resource-btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 13px; border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); background: rgba(255,255,255,.025); font-size: 11px; text-decoration: none;
+      transition: border-color .2s, color .2s, background .2s, transform .15s;
+    }
+    .resource-btn:hover { border-color: rgba(0,229,195,.25); color: var(--accent); background: rgba(0,229,195,.045); transform: translateY(-1px); }
+    .resource-btn svg { width: 13px; height: 13px; }
+    .name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 6px; }
+    .meta { font-size: 10px; color: var(--muted); line-height: 1.5; }
+    .tag { flex-shrink: 0; font-size: 10px; padding: 3px 9px; border-radius: 999px; border: 1px solid rgba(0,229,195,.2); color: var(--accent); background: var(--tag-bg); white-space: nowrap; }
+    footer { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .card summary { grid-template-columns: 1fr auto; }
+      .tag { grid-column: 1 / -1; width: fit-content; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">Alex <span>Anokhin</span></a>
+    <ul class="nav-links">
+      <li><a href="/">About</a></li>
+      <li><a href="/projects" aria-current="page">Projects</a></li>
+      <li><a href="/news">News</a></li>
+    </ul>
+  </nav>
+  <main>
+    <p class="eyebrow">// projects</p>
+    <h1>Research, publications & open source</h1>
+    <p class="subtitle">A working index for AI systems research, protocol ideas, agent architectures, vector search experiments, and open-source tools.</p>
+    <div class="grid">
+      {projects.map((project, index) => (
+        <details class="card" open={index === 0}>
+          <summary>
+            <div>
+              <div class="name">{project.name}</div>
+              <div class="summary">{project.summary}</div>
+            </div>
+            <span class="tag">{project.tag}</span>
+            <span class="chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="panel">
+            <div class="desc">{project.desc}</div>
+            <div class="actions">
+              <a class="github-btn" href={project.href} target="_blank" rel="noopener" aria-label={`Open ${project.name} on GitHub`}>
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                GitHub
+              </a>
+              {project.links.map((link) => (
+                <a class="resource-btn" href={link.href} target="_blank" rel="noopener" aria-label={`Open ${project.name} ${link.label}`}>
+                  {link.kind === "hf" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 11v2"/><path d="M16 11v2"/><path d="M6.5 16.5c1.5 1 3.3 1.5 5.5 1.5s4-.5 5.5-1.5"/><path d="M5 9.5c0-3.6 3-6.5 7-6.5s7 2.9 7 6.5V14c0 3.9-3.1 7-7 7s-7-3.1-7-7V9.5Z"/></svg>
+                  )}
+                  {link.kind === "doi" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 12V5a2 2 0 0 1 2-2h8l4 4v5"/><path d="M5 18h1.5a2 2 0 0 0 0-4H5v6"/><path d="M11 14v6"/><path d="M15 14h2a2 2 0 0 1 0 4h-2v-4Z"/></svg>
+                  )}
+                  {link.kind === "colab" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 17a5 5 0 0 1 0-10c3.5 0 5 5 7 5s3.5-5 7-5a5 5 0 0 1 0 10c-3.5 0-5-5-7-5s-3.5 5-7 5Z"/></svg>
+                  )}
+                  {link.label}
+                </a>
+              ))}
+              <div class="meta">{project.meta}</div>
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+    <footer>© 2026 Alex Anokhin</footer>
+  </main>
+</body>
+</html>

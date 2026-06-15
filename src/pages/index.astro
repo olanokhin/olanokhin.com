@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Anokhin — Founding AI Engineer</title>
+  <meta name="description" content="Alex Anokhin — Founding AI Engineer for forward-deployed AI, production RAG, agentic systems, and AI security." />
+  <meta name="author" content="Alex Anokhin" />
+  <link rel="canonical" href="https://olanokhin.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://olanokhin.com/" />
+  <meta property="og:title" content="Alex Anokhin — Founding AI Engineer" />
+  <meta property="og:description" content="Forward-deployed AI · Production RAG · Agentic Systems · AI Security." />
+  <meta property="og:image" content="https://olanokhin.com/img/social-media-card.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://olanokhin.com/" />
+  <meta name="twitter:title" content="Alex Anokhin — Founding AI Engineer" />
+  <meta name="twitter:description" content="Forward-deployed AI · Production RAG · Agentic Systems · AI Security." />
+  <meta name="twitter:image" content="https://olanokhin.com/img/social-media-card.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+  <link rel="manifest" href="/favicon_io/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #08090b;
+      --surface:  #0f1114;
+      --border:   rgba(255,255,255,.07);
+      --border2:  rgba(255,255,255,.12);
+      --accent:   #00e5c3;
+      --accent2:  #005c4e;
+      --text:     #e8eaed;
+      --muted:    #5a6070;
+      --muted2:   #8892a0;
+      --tag-bg:   rgba(0,229,195,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .025; pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 32px;
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,9,11,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 14px;
+      color: #fff; text-decoration: none; letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* LAYOUT */
+    .container {
+      position: relative; z-index: 1;
+      max-width: 780px; margin: 0 auto;
+      padding: 116px 24px 100px;
+    }
+
+    section { margin-bottom: 88px; }
+
+    .section-label {
+      font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 32px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* HERO */
+    .hero { margin-bottom: 80px; animation: fadeUp .7s ease both; }
+
+    .eyebrow {
+      font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 4.2rem);
+      font-weight: 800; line-height: 1.05;
+      letter-spacing: -.02em; color: #fff;
+    }
+    h1 span { color: var(--accent); }
+
+    .subtitle {
+      margin-top: 20px; font-size: 12px;
+      color: var(--muted2); line-height: 1.9; max-width: 520px;
+    }
+
+    .status {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 28px; padding: 6px 14px;
+      border: 1px solid var(--border); border-radius: 999px;
+      font-size: 11px; color: var(--muted); background: var(--surface);
+    }
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s ease infinite;
+    }
+
+    /* BUTTONS */
+    .contact-row {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 40px; animation: fadeUp .7s .1s ease both;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border: 1px solid var(--border); border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text); text-decoration: none; background: var(--surface);
+      transition: border-color .2s, color .2s, background .2s, transform .15s;
+      letter-spacing: .03em;
+    }
+    .btn:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--tag-bg); transform: translateY(-2px);
+    }
+    .btn-primary {
+      background: var(--accent2); border-color: var(--accent); color: var(--accent);
+    }
+
+    /* METRICS */
+    .metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+      margin-top: 52px; animation: fadeUp .7s .2s ease both;
+    }
+    .metric { background: var(--surface); padding: 20px 22px; text-align: center; }
+    .metric-num {
+      font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 800;
+      color: var(--accent); line-height: 1;
+    }
+    .metric-label { font-size: 10px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+    /* ABOUT */
+    .about-text {
+      font-size: 13px; line-height: 2; color: var(--muted2);
+      animation: fadeUp .7s .15s ease both;
+    }
+    .about-text p + p { margin-top: 16px; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-text em { color: var(--accent); font-style: normal; }
+
+    /* TIMELINE */
+    .timeline { animation: fadeUp .7s .2s ease both; }
+    .tl-year-group { margin-bottom: 36px; }
+
+    .tl-year {
+      font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+      color: var(--accent); letter-spacing: .1em;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .tl-year::after { content: ''; flex: 1; height: 1px; background: var(--accent2); opacity: .4; }
+
+    .tl-item { display: grid; grid-template-columns: 2px 1fr; gap: 0 20px; margin-bottom: 10px; }
+
+    .tl-line {
+      width: 2px; background: var(--border2); border-radius: 2px; position: relative;
+    }
+    .tl-line::before {
+      content: ''; position: absolute; top: 7px; left: -3px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--surface); border: 1.5px solid var(--accent);
+    }
+
+    .tl-card {
+      padding: 16px 20px 18px;
+      border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+      transition: border-color .2s;
+    }
+    .tl-card:hover { border-color: rgba(0,229,195,.2); }
+
+    .tl-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 12px; margin-bottom: 8px;
+    }
+    .tl-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: #fff; }
+    .tl-company { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .tl-tag {
+      flex-shrink: 0; font-size: 10px; padding: 3px 9px;
+      border-radius: 999px; white-space: nowrap; margin-top: 2px;
+      border: 1px solid rgba(0,229,195,.2); color: var(--accent); background: var(--tag-bg);
+    }
+    .tl-tag.enterprise { border-color: rgba(100,160,255,.2); color: #64a0ff; background: rgba(100,160,255,.05); }
+    .tl-tag.freelance  { border-color: rgba(255,180,50,.2);  color: #ffb432; background: rgba(255,180,50,.05);  }
+    .tl-tag.venture    { border-color: rgba(200,100,255,.2); color: #c864ff; background: rgba(200,100,255,.05); }
+
+    .tl-bullets { list-style: none; margin-top: 10px; }
+    .tl-bullets li {
+      font-size: 11px; color: var(--muted2); line-height: 1.75;
+      padding-left: 16px; position: relative;
+    }
+    .tl-bullets li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--accent); font-size: 10px;
+    }
+    .tl-bullets li + li { margin-top: 4px; }
+
+    /* RESEARCH */
+    .research-grid { display: grid; gap: 12px; animation: fadeUp .7s .2s ease both; }
+
+    .r-card {
+      padding: 20px 24px; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--surface);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+      transition: border-color .2s, background .2s; text-decoration: none; color: inherit;
+    }
+    .r-card:hover { border-color: rgba(0,229,195,.25); background: rgba(0,229,195,.03); }
+
+    .r-card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 6px; }
+    .r-card-desc { font-size: 11px; color: var(--muted); line-height: 1.75; }
+
+    .r-card-tag {
+      flex-shrink: 0; font-size: 10px; padding: 3px 9px; border-radius: 999px;
+      border: 1px solid rgba(0,229,195,.2); color: var(--accent); background: var(--tag-bg);
+      white-space: nowrap; margin-top: 2px;
+    }
+
+    /* HACKATHONS */
+    .hack-list { display: grid; gap: 10px; animation: fadeUp .7s .2s ease both; }
+
+    .hack-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+    }
+    .hack-medal { font-size: 20px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+    .hack-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 4px; }
+    .hack-desc { font-size: 11px; color: var(--muted2); line-height: 1.65; }
+    .hack-date { font-size: 10px; color: var(--muted); margin-top: 5px; }
+
+    /* OPERATING MODE */
+    .mode-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+      animation: fadeUp .7s .2s ease both;
+    }
+    .mode-card {
+      padding: 18px 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+    }
+    .mode-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 8px; }
+    .mode-desc { font-size: 11px; color: var(--muted2); line-height: 1.75; }
+
+    /* WRITING */
+    .writing-grid { display: grid; gap: 12px; animation: fadeUp .7s .2s ease both; }
+
+    .w-card {
+      padding: 18px 22px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+      transition: border-color .2s, background .2s;
+    }
+    .w-card:hover { border-color: rgba(0,229,195,.2); background: rgba(0,229,195,.02); }
+
+    .w-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .w-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: #fff; line-height: 1.4; }
+
+    .w-cat {
+      flex-shrink: 0; font-size: 10px; padding: 2px 8px;
+      border-radius: 4px; border: 1px solid var(--border); color: var(--muted);
+    }
+
+    .w-hook {
+      font-size: 12px; color: var(--muted2); line-height: 1.75; font-style: italic;
+      border-left: 2px solid var(--accent2); padding-left: 12px;
+    }
+    .w-list {
+      list-style: none; border-left: 2px solid var(--accent2); padding-left: 12px;
+    }
+    .w-list li {
+      font-size: 11px; color: var(--muted2); line-height: 1.65; position: relative; padding-left: 14px;
+      font-weight: 300;
+    }
+    .w-list li + li { margin-top: 3px; }
+    .w-list li::before {
+      content: '→'; position: absolute; left: 0; color: var(--muted); font-size: 9px;
+    }
+
+    /* STACK */
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; animation: fadeUp .7s .2s ease both; }
+    .pill {
+      font-size: 11px; padding: 5px 12px; border-radius: 4px;
+      border: 1px solid var(--border); color: var(--muted); background: var(--surface);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border);
+      font-size: 11px; color: var(--muted);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: .3; }
+    }
+
+    @media (max-width: 600px) {
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .metrics .metric:last-child { grid-column: span 2; }
+      .nav-links { display: none; }
+      h1 { font-size: 2.4rem; }
+      .r-card { flex-direction: column; }
+      .mode-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Alex <span>Anokhin</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="/projects">Projects</a></li>
+    <li><a href="/news">News</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="eyebrow">// olanokhin.com</p>
+    <h1>Alex<br><span>Anokhin</span></h1>
+    <p class="subtitle">
+      Founding AI Engineer · Forward-Deployed AI<br>
+      Production RAG · Agentic Systems · AI Security<br>
+      Turning ambiguous business problems into adopted AI systems.
+    </p>
+    <div class="status">
+      <span class="status-dot"></span>
+      Currently @ Exyte · Heilbronn, Germany
+    </div>
+
+    <div class="contact-row">
+      <a href="mailto:olanokhin@gmail.com" class="btn btn-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        olanokhin@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/olanokhin" target="_blank" rel="noopener" class="btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/olanokhin
+      </a>
+      <a href="https://github.com/olanokhin" target="_blank" rel="noopener" class="btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        github.com/olanokhin
+      </a>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">93%</div>
+        <div class="metric-label">EA assistant<br>answer quality</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">8×</div>
+        <div class="metric-label">LLM input reduction<br>1M → 115k rows</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">4×</div>
+        <div class="metric-label">Meeting review<br>speedup @ Wire</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">// about</p>
+    <div class="about-text">
+      <p>
+        I'm Alex — a <strong>founding-style AI engineer</strong> based in Heilbronn, Germany.
+        I work best where the problem is underspecified: the business owner has pain, the data is messy,
+        system boundaries are unclear, and someone needs to turn it into a production workflow.
+      </p>
+      <p>
+        My operating range is full lifecycle: discovery, solution design, evaluation, implementation,
+        deployment, adoption, and stakeholder ownership. At Exyte I independently scoped and delivered
+        AI initiatives across procurement, enterprise architecture, knowledge management, and governance.
+        At Wire I was the sole AI engineer on a cross-functional note-taking initiative spanning product,
+        mobile, backend, and security.
+      </p>
+      <p>
+        Before AI, I spent <em>10+ years in live technical production</em>: concerts, broadcasts,
+        corporate events, and protocol-controlled rooms where failures were public and recovery windows
+        were measured in seconds. That is where my production mindset comes from.
+      </p>
+      <p>
+        Outside employment, I build research and open-source systems around vector search, agent security,
+        trust infrastructure, and multi-agent review. I'm a 3x hackathon winner, accelerator winner,
+        AI-startup feasibility judge, mentor, husband to Angelika, and father to Anna.
+      </p>
+    </div>
+  </section>
+
+  <!-- OPERATING MODE -->
+  <section id="mode">
+    <p class="section-label">// operating mode</p>
+    <div class="mode-grid">
+      <div class="mode-card">
+        <div class="mode-title">Embed First</div>
+        <div class="mode-desc">Work directly with business owners and engineering teams until the real constraint is visible.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-title">Define Evals Early</div>
+        <div class="mode-desc">Build test sets, scoring methods, and traceability before scaling prompts or adding orchestration.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-title">Ship Narrow</div>
+        <div class="mode-desc">Scope the first useful workflow tightly, get adoption, then generalize from real usage.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-title">Control Cost & Latency</div>
+        <div class="mode-desc">Prefer deterministic filtering, caching, and HITL controls before spending tokens blindly.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <p class="section-label">// work</p>
+    <div class="timeline">
+
+      <div class="tl-year-group">
+        <div class="tl-year">2026 — present</div>
+        <div class="tl-item">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">AI Engineer</div>
+                <div class="tl-company">Exyte Management GmbH · Stuttgart, Germany</div>
+              </div>
+              <span class="tl-tag enterprise">Enterprise</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Embedded directly with business owners and enterprise architects as de-facto owner of AI initiatives across enterprise architecture, procurement, knowledge management, and governance.</li>
+              <li>Enterprise Architecture AI Agent: designed, built, and evaluated in 4 weeks; achieved <strong style="color:var(--accent)">93% answer quality</strong> and 87% context-match in single-shot mode; deployed via Microsoft Copilot Studio.</li>
+              <li>Procurement Data Enrichment: reduced LLM input volume <strong style="color:var(--accent)">~8x</strong> from 1M rows to ~115k via deterministic non-Latin filtering, cross-session caching, glossary controls, and HITL refinement.</li>
+              <li>RFI Knowledge Management: replaced manual SharePoint/Excel search with hybrid RAG — BM25 + semantic retrieval + LLM reranker — with eval datasets, editing, versioning, and authorship traceability.</li>
+              <li>AI Governance Intake: replaced a ~1-week manual scoring cycle with automated prioritization, instant notifications, and auto-created tickets via Microsoft Forms, SharePoint, and Power Automate.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-year-group">
+        <div class="tl-year">2025</div>
+
+        <div class="tl-item" style="margin-bottom:10px;">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">AI Integration Engineer</div>
+                <div class="tl-company">Wire Germany GmbH · Berlin (Remote) · Apr – Sep 2025</div>
+              </div>
+              <span class="tl-tag enterprise">Enterprise</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Built a working AI note-taking PoC in a single day and pitched it at company-wide sprint planning to ~100 people including the CTO; greenlit for production.</li>
+              <li>Sole AI engineer in a 3-month cross-functional implementation with Product, Design, Android, iOS, Backend, and Security; reached internal staging.</li>
+              <li>Cut meeting review time <strong style="color:var(--accent)">~4x</strong> via transcription + summarization service under strict security constraints, including custom-compiled FFmpeg and stripped I/O.</li>
+              <li>Built a Reminder Bot with custom NLP-to-cron parser and interactive button UI, replacing rigid slash commands for non-technical users.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">KIWI Knowhow</div>
+                <div class="tl-company">Co-founder & Tech Lead · Virtual Senior Engineer RAG Platform</div>
+              </div>
+              <span class="tl-tag venture">Venture</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Multimodal RAG for engineering knowledge retrieval across text and diagrams from technical PDFs.</li>
+              <li>Won the CyberValley AI Founders pitch competition in the Stuttgart/Tuebingen accelerator ecosystem, earning 1st place and EUR 10,000 in AWS credits.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-year-group">
+        <div class="tl-year">2024</div>
+
+        <div class="tl-item" style="margin-bottom:10px;">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">ClyrAI</div>
+                <div class="tl-company">Freelance · AI Content Strategy Agent</div>
+              </div>
+              <span class="tl-tag freelance">Freelance</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>LinkedIn brand-health agent: custom parser → AI agent → ready PDF report.</li>
+              <li>Cut reporting time <strong style="color:var(--accent)">~3x</strong> for SMM workflows.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" style="margin-bottom:10px;">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">Abbey Tholey — Virtual Monk</div>
+                <div class="tl-company">Freelance · Context-Aware RAG Agent</div>
+              </div>
+              <span class="tl-tag freelance">Freelance</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Digitized museum archives dating back to 634 AD — nearly 1,400 years of history — into an interactive RAG assistant with persistent session memory.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" style="margin-bottom:10px;">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">GreeterAI</div>
+                <div class="tl-company">Co-founder & Solo Developer · Generative Video Greetings</div>
+              </div>
+              <span class="tl-tag venture">Venture</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>End-to-end generative video pipeline: LLM + xTTS + Wav2Lip for personalized greetings.</li>
+              <li>Built ~90% of the codebase over 3 months; generated and delivered 300+ personalized videos live at KI Festival Heilbronn.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">Tsunami 2025</div>
+                <div class="tl-company">Freelance · Career Intelligence Agent</div>
+              </div>
+              <span class="tl-tag freelance">Freelance</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Conversational agent that maps user domains to labor market vulnerability quadrants and generates personalized 3-year upskilling roadmaps.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <p class="section-label">// research</p>
+    <div class="research-grid">
+
+      <a href="https://github.com/olanokhin/bitplane-ann" target="_blank" rel="noopener" class="r-card">
+        <div>
+          <div class="r-card-name">Bitplane-ANN</div>
+          <div class="r-card-desc">
+            8-bit progressive vector search storing embeddings as compact codes instead of float32.
+            Demonstrates ~4x storage reduction with 99.8-99.9% Recall@10 on 1M-vector text and vision datasets via progressive filtering + reranking.
+          </div>
+        </div>
+        <span class="r-card-tag">Paper · DOI</span>
+      </a>
+
+      <a href="https://github.com/olanokhin/agent-security-skill" target="_blank" rel="noopener" class="r-card">
+        <div>
+          <div class="r-card-name">Agent Security Skill</div>
+          <div class="r-card-desc">
+            OWASP-aligned security-review skill for coding agents.
+            Covers 33 categories across LLM, RAG, MCP, tool, and agentic systems; supports Claude Code, Codex, Cursor, Copilot, and Windsurf.
+          </div>
+        </div>
+        <span class="r-card-tag">Open Source</span>
+      </a>
+
+      <a href="https://github.com/olanokhin/ata-protocol" target="_blank" rel="noopener" class="r-card">
+        <div>
+          <div class="r-card-name">ATA Protocol</div>
+          <div class="r-card-desc">
+            Authorization Type Attestation: cryptographic verification of authorization origin for human- vs AI-authorized communication.
+            Working PoC includes MCP server and header-level protocol implementation.
+          </div>
+        </div>
+        <span class="r-card-tag">Protocol · HF Demo</span>
+      </a>
+
+      <a href="https://github.com/olanokhin/cpar-framework" target="_blank" rel="noopener" class="r-card">
+        <div>
+          <div class="r-card-name">CPAR Framework</div>
+          <div class="r-card-desc">
+            Cross-provider multi-agent peer review with independent web-searching reviewers.
+            Outperformed a single-model baseline on 15/15 criteria in blind A/B evaluation.
+          </div>
+        </div>
+        <span class="r-card-tag">Multi-Agent</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- HACKATHONS -->
+  <section id="hackathons">
+    <p class="section-label">// hackathons — 3× 1st place</p>
+    <div class="hack-list">
+
+      <div class="hack-item">
+        <div class="hack-medal">🥇</div>
+        <div>
+          <div class="hack-title">Future City Hackathon — HHN & 42 Heilbronn</div>
+          <div class="hack-desc">AI agent for automated grid connection requests — end-to-end processing of PV and energy storage infrastructure documents.</div>
+          <div class="hack-date">November 2025</div>
+        </div>
+      </div>
+
+      <div class="hack-item">
+        <div class="hack-medal">🥇</div>
+        <div>
+          <div class="hack-title">Make.com Hackathon — 42 Heilbronn</div>
+          <div class="hack-desc">Automated Next.js internship platform integrating 42 Intra API, Google Sheets, and email workflows.</div>
+          <div class="hack-date">July 2025</div>
+        </div>
+      </div>
+
+      <div class="hack-item">
+        <div class="hack-medal">🥇</div>
+        <div>
+          <div class="hack-title">Wire × Schwarz IT Hackathon</div>
+          <div class="hack-desc">Whisper voice transcription + chat summary AI features. Built the evening before the demo. Directly resulted in an internship offer at Wire.</div>
+          <div class="hack-date">November 2024</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="writing">
+    <p class="section-label">// startup & community</p>
+    <div class="writing-grid">
+
+      <div class="w-card">
+        <div class="w-header">
+          <div class="w-title">Campus Founders</div>
+          <span class="w-cat">Judge · Mentor</span>
+        </div>
+        <ul class="w-list">
+          <li>AI Start 2024 — participant</li>
+          <li>AI Start 2025 — pitch finalist</li>
+          <li>AI Founders 2025 — founder program</li>
+          <li>AI Start April 2026 — technical feasibility judge</li>
+          <li>Campus Founders — mentor pool member</li>
+        </ul>
+      </div>
+
+      <div class="w-card">
+        <div class="w-header">
+          <div class="w-title">CyberValley AI Founders</div>
+          <span class="w-cat">Pitch Winner</span>
+        </div>
+        <div class="w-hook">Winner of the 2025 pitch competition in the Stuttgart/Tuebingen accelerator ecosystem: 1st place and EUR 10,000 in AWS credits.</div>
+      </div>
+
+      <div class="w-card">
+        <div class="w-header">
+          <div class="w-title">AppliedAI Meetup Speaker</div>
+          <span class="w-cat">Agents</span>
+        </div>
+        <div class="w-hook">Live demo of an autonomous agent architecture in n8n: autonomous loop, skill bank, Python execution sandbox, and Telegram interface in 7 workflow nodes.</div>
+      </div>
+
+      <div class="w-card">
+        <div class="w-header">
+          <div class="w-title">42 Heilbronn AI Club</div>
+          <span class="w-cat">Education</span>
+        </div>
+        <div class="w-hook">Founded AI Club with 78 members; led workshops on RAG and agent architectures; built and deployed a hybrid RAG FAQ agent.</div>
+      </div>
+
+      <div class="w-card">
+        <div class="w-header">
+          <div class="w-title">Operational Background</div>
+          <span class="w-cat">Production</span>
+        </div>
+        <div class="w-hook">100+ live events per year before AI: concerts, broadcasts, conferences, and high-profile productions where recovery windows were measured in seconds.</div>
+      </div>
+
+      <div class="w-card">
+        <div class="w-header">
+          <div class="w-title">Commercial Instinct</div>
+          <span class="w-cat">Go-to-market</span>
+        </div>
+        <div class="w-hook">Built and toured a commercial cover band; worked in high-ticket real-estate sales; used drone-view marketing and TikTok distribution before it became normal in the local market.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section>
+    <p class="section-label">// stack</p>
+    <div class="pills">
+      <span class="pill">Python</span>
+      <span class="pill">TypeScript / JS</span>
+      <span class="pill">C / C++</span>
+      <span class="pill">Kotlin</span>
+      <span class="pill">RAG · Graph RAG</span>
+      <span class="pill">Hybrid RAG</span>
+      <span class="pill">Autonomous Agents</span>
+      <span class="pill">MCP</span>
+      <span class="pill">RAG Evaluation</span>
+      <span class="pill">LangGraph</span>
+      <span class="pill">LangChain</span>
+      <span class="pill">Langfuse</span>
+      <span class="pill">OWASP AI Security</span>
+      <span class="pill">FAISS · pgvector · HNSW</span>
+      <span class="pill">BM25</span>
+      <span class="pill">OCR · Document AI</span>
+      <span class="pill">Whisper</span>
+      <span class="pill">LiveKit</span>
+      <span class="pill">Gradio · Streamlit</span>
+      <span class="pill">FastAPI</span>
+      <span class="pill">ReactJS · Next.js</span>
+      <span class="pill">Azure AI Foundry</span>
+      <span class="pill">Docker · Linux</span>
+      <span class="pill">GitHub Actions · Azure DevOps</span>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Alex Anokhin</span>
+    <span>Heilbronn, Germany · remote-first · authorized to work in the EU</span>
+  </footer>
+
+</div>
+</body>
+</html>

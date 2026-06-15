@@ -1,3 +1,6 @@
+---
+import "../styles/global.css";
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,45 +9,57 @@
   <title>Alex Anokhin — Founding AI Engineer</title>
   <meta name="description" content="Alex Anokhin — Founding AI Engineer for forward-deployed AI, production RAG, agentic systems, and AI security." />
   <meta name="author" content="Alex Anokhin" />
+  <meta name="theme-color" content="#08090b" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-title" content="Alex Anokhin" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="canonical" href="https://olanokhin.com/" />
+  <link rel="alternate" type="application/rss+xml" title="Alex Anokhin News RSS" href="https://olanokhin.com/rss.xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://olanokhin.com/" />
   <meta property="og:title" content="Alex Anokhin — Founding AI Engineer" />
   <meta property="og:description" content="Forward-deployed AI · Production RAG · Agentic Systems · AI Security." />
-  <meta property="og:image" content="https://olanokhin.com/img/social-media-card.png" />
+  <meta property="og:image" content="https://olanokhin.com/img/social-media-card.jpg" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://olanokhin.com/" />
   <meta name="twitter:title" content="Alex Anokhin — Founding AI Engineer" />
   <meta name="twitter:description" content="Forward-deployed AI · Production RAG · Agentic Systems · AI Security." />
-  <meta name="twitter:image" content="https://olanokhin.com/img/social-media-card.png" />
+  <meta name="twitter:image" content="https://olanokhin.com/img/social-media-card.jpg" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Alex Anokhin",
+    url: "https://olanokhin.com/",
+    jobTitle: "Founding AI Engineer",
+    knowsAbout: [
+      "Forward-deployed AI",
+      "Production RAG",
+      "Agentic systems",
+      "AI security"
+    ],
+    sameAs: [
+      "https://github.com/olanokhin",
+      "https://www.linkedin.com/in/olanokhin/"
+    ]
+  })} />
   <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
   <link rel="manifest" href="/favicon_io/site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:       #08090b;
-      --surface:  #0f1114;
-      --border:   rgba(255,255,255,.07);
-      --border2:  rgba(255,255,255,.12);
-      --accent:   #00e5c3;
-      --accent2:  #005c4e;
-      --text:     #e8eaed;
-      --muted:    #5a6070;
-      --muted2:   #8892a0;
-      --tag-bg:   rgba(0,229,195,.07);
-    }
-
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { margin: 0; padding: 0; }
 
     body {
       background: var(--bg);
@@ -161,10 +176,21 @@
       animation: pulse 2s ease infinite;
     }
 
+    .hero-cover {
+      display: block;
+      width: min(100%, 680px);
+      height: auto;
+      margin-top: 34px;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 24px 80px rgba(0,0,0,.28);
+    }
+
     /* BUTTONS */
     .contact-row {
       display: flex; flex-wrap: wrap; gap: 10px;
-      margin-top: 40px; animation: fadeUp .7s .1s ease both;
+      margin-top: 30px; animation: fadeUp .7s .1s ease both;
     }
 
     .btn {
@@ -234,7 +260,7 @@
       border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
       transition: border-color .2s;
     }
-    .tl-card:hover { border-color: rgba(0,229,195,.2); }
+    .tl-card:hover { border-color: rgba(var(--accent-rgb), .2); }
 
     .tl-header {
       display: flex; justify-content: space-between; align-items: flex-start;
@@ -246,7 +272,7 @@
     .tl-tag {
       flex-shrink: 0; font-size: 10px; padding: 3px 9px;
       border-radius: 999px; white-space: nowrap; margin-top: 2px;
-      border: 1px solid rgba(0,229,195,.2); color: var(--accent); background: var(--tag-bg);
+      border: 1px solid rgba(var(--accent-rgb), .2); color: var(--accent); background: var(--tag-bg);
     }
     .tl-tag.enterprise { border-color: rgba(100,160,255,.2); color: #64a0ff; background: rgba(100,160,255,.05); }
     .tl-tag.freelance  { border-color: rgba(255,180,50,.2);  color: #ffb432; background: rgba(255,180,50,.05);  }
@@ -272,14 +298,14 @@
       display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
       transition: border-color .2s, background .2s; text-decoration: none; color: inherit;
     }
-    .r-card:hover { border-color: rgba(0,229,195,.25); background: rgba(0,229,195,.03); }
+    .r-card:hover { border-color: rgba(var(--accent-rgb), .25); background: rgba(var(--accent-rgb), .03); }
 
     .r-card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 6px; }
     .r-card-desc { font-size: 11px; color: var(--muted); line-height: 1.75; }
 
     .r-card-tag {
       flex-shrink: 0; font-size: 10px; padding: 3px 9px; border-radius: 999px;
-      border: 1px solid rgba(0,229,195,.2); color: var(--accent); background: var(--tag-bg);
+      border: 1px solid rgba(var(--accent-rgb), .2); color: var(--accent); background: var(--tag-bg);
       white-space: nowrap; margin-top: 2px;
     }
 
@@ -313,7 +339,7 @@
       padding: 18px 22px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
       transition: border-color .2s, background .2s;
     }
-    .w-card:hover { border-color: rgba(0,229,195,.2); background: rgba(0,229,195,.02); }
+    .w-card:hover { border-color: rgba(var(--accent-rgb), .2); background: rgba(var(--accent-rgb), .02); }
 
     .w-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
     .w-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: #fff; line-height: 1.4; }
@@ -338,6 +364,29 @@
     .w-list li::before {
       content: '→'; position: absolute; left: 0; color: var(--muted); font-size: 9px;
     }
+
+    /* EDUCATION */
+    .education-grid { display: grid; gap: 12px; animation: fadeUp .7s .2s ease both; }
+    .edu-card {
+      padding: 18px 22px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+      transition: border-color .2s, background .2s;
+    }
+    .edu-card:hover { border-color: rgba(var(--accent-rgb), .2); background: rgba(var(--accent-rgb), .02); }
+    .edu-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .edu-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: #fff; line-height: 1.4; }
+    .edu-date {
+      flex-shrink: 0; font-size: 10px; padding: 2px 8px; border-radius: 4px;
+      border: 1px solid rgba(var(--accent-rgb), .2); color: var(--accent); background: var(--tag-bg);
+    }
+    .edu-desc { font-size: 11px; color: var(--muted2); line-height: 1.75; }
+    .edu-list { list-style: none; margin-top: 10px; display: grid; gap: 5px; }
+    .edu-list li {
+      font-size: 11px; color: var(--muted2); line-height: 1.65; position: relative; padding-left: 14px;
+    }
+    .edu-list li::before {
+      content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 9px;
+    }
+    .edu-list strong { color: var(--text); font-weight: 500; }
 
     /* STACK */
     .pills { display: flex; flex-wrap: wrap; gap: 8px; animation: fadeUp .7s .2s ease both; }
@@ -376,9 +425,13 @@
       .nav-toggle:checked + .nav-menu-btn span { background: transparent; }
       .nav-toggle:checked + .nav-menu-btn span::before { background: var(--accent); transform: translateY(0) rotate(45deg); }
       .nav-toggle:checked + .nav-menu-btn span::after { background: var(--accent); transform: translateY(-2px) rotate(-45deg); }
-      h1 { font-size: 2.4rem; }
+      h1 { font-size: 2.25rem; }
+      .hero-cover { margin-top: 28px; }
       .r-card { flex-direction: column; }
       .mode-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px) {
+      h1 { font-size: 2.05rem; }
     }
   </style>
 </head>
@@ -410,6 +463,17 @@
       <span class="status-dot"></span>
       Currently @ Exyte · Heilbronn, Germany
     </div>
+
+    <img
+      class="hero-cover"
+      src="/img/social-media-card.jpg"
+      alt="Alex Anokhin portrait with the slogan Building Intelligence. Expanding Humanity."
+      width="1536"
+      height="1024"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
 
     <div class="contact-row">
       <a href="mailto:olanokhin@gmail.com" class="btn btn-primary">
@@ -501,7 +565,7 @@
 
       <div class="tl-year-group">
         <div class="tl-year">2026 — present</div>
-        <div class="tl-item">
+        <div class="tl-item" style="margin-bottom:10px;">
           <div class="tl-line"></div>
           <div class="tl-card">
             <div class="tl-header">
@@ -517,6 +581,24 @@
               <li>Procurement Data Enrichment: reduced LLM input volume <strong style="color:var(--accent)">~8x</strong> from 1M rows to ~115k via deterministic non-Latin filtering, cross-session caching, glossary controls, and HITL refinement.</li>
               <li>RFI Knowledge Management: replaced manual SharePoint/Excel search with hybrid RAG — BM25 + semantic retrieval + LLM reranker — with eval datasets, editing, versioning, and authorship traceability.</li>
               <li>AI Governance Intake: replaced a ~1-week manual scoring cycle with automated prioritization, instant notifications, and auto-created tickets via Microsoft Forms, SharePoint, and Power Automate.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">CausLock</div>
+                <div class="tl-company">Governance Protocol · Human+AI Collaboration · In Progress</div>
+              </div>
+              <span class="tl-tag venture">Venture</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Human+AI collaboration governance protocol with ticket-as-spine architecture linking Linear, GitHub, Slack, and Notion into an engineering knowledge graph.</li>
+              <li>Introduces Bus Factor Score, AI Slop Score, and Legacy Score metrics to track team resilience, AI-generated noise, and long-term maintainability.</li>
+              <li>Motivated by a concrete review asymmetry: Git was designed for human collaboration at roughly 100 words/minute, while AI agents operate at 200+ tokens/second, making traditional code review physically impossible at agent speed.</li>
             </ul>
           </div>
         </div>
@@ -627,6 +709,44 @@
             </div>
             <ul class="tl-bullets">
               <li>Conversational agent that maps user domains to labor market vulnerability quadrants and generates personalized 3-year upskilling roadmaps.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-year-group">
+        <div class="tl-year">2023</div>
+
+        <div class="tl-item" style="margin-bottom:10px;">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">Salesonic</div>
+                <div class="tl-company">Freelance · NLP-to-Sales Outreach Pipeline</div>
+              </div>
+              <span class="tl-tag freelance">Freelance</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Engineered a fully automated NLP-to-sales-outreach pipeline by integrating LLMs with Apollo.io and Salesforge APIs.</li>
+              <li>Delivered a functional PoC before the founder's strategic market pivot.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-line"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <div class="tl-title">Internal Educational Platform</div>
+                <div class="tl-company">Frontend Developer · React MVP</div>
+              </div>
+              <span class="tl-tag freelance">Freelance</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Developed the frontend MVP in ReactJS for an internal educational platform.</li>
+              <li>Adopted by 150+ students for project submission and progress tracking.</li>
             </ul>
           </div>
         </div>
@@ -760,9 +880,9 @@
       <div class="w-card">
         <div class="w-header">
           <div class="w-title">42 Heilbronn AI Club</div>
-          <span class="w-cat">Education</span>
+          <span class="w-cat">Founder · Organizer</span>
         </div>
-        <div class="w-hook">Founded AI Club with 78 members; led workshops on RAG and agent architectures; built and deployed a hybrid RAG FAQ agent.</div>
+        <div class="w-hook">Founded and organized the AI Club with 78 members; led hands-on workshops teaching RAG architecture and LLM systems. Built and deployed a Hybrid RAG FAQ agent on the Notion wiki using hierarchical chunking, hypothetical question generation per chunk, and hybrid vector + keyword retrieval to automate new student onboarding queries.</div>
       </div>
 
       <div class="w-card">
@@ -781,6 +901,48 @@
         <div class="w-hook">Built and toured a commercial cover band; worked in high-ticket real-estate sales; used drone-view marketing and TikTok distribution before it became normal in the local market.</div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">// education</p>
+    <div class="education-grid">
+      <div class="edu-card">
+        <div class="edu-header">
+          <div class="edu-title">42 Heilbronn — Core Curriculum Certificate</div>
+          <span class="edu-date">Oct 2023 – Aug 2025</span>
+        </div>
+        <div class="edu-desc">Tuition-free, peer-evaluated software engineering program in Heilbronn, Germany. Completed 6 progressive ranks with 100% pass rate on all exams and 1,800+ hours of project-based C/C++ systems programming.</div>
+        <ul class="edu-list">
+          <li><strong>Key projects:</strong> ft_transcendence — led 5-person team building a real-time multiplayer 3D web platform with WebSockets, Fastify, and React; designed and implemented the AI opponent.</li>
+          <li><strong>Systems projects:</strong> ft_irc — led 3-person team implementing a full IRC server in C++ from scratch (175h); miniRT — ray tracer rendering 3D scenes in C (280h); minishell — mini bash with signals, pipes, and env variables in C (210h).</li>
+          <li><strong>Skills developed:</strong> imperative and OOP programming, algorithms, system programming, networking, Linux/sysadmin, and full-stack web.</li>
+          <li><strong>Partner engineering visits:</strong> Audi, Mercedes-AMG, MHP, T-Systems, Vector, XL2, Schwarz Digits.</li>
+          <li><strong>Industry workshops at 42:</strong> Aleph Alpha on LLM fine-tuning, AWS, EY on code licensing in the AI era, Schwarz IT on computer-vision detection.</li>
+        </ul>
+      </div>
+      <div class="edu-card">
+        <div class="edu-header">
+          <div class="edu-title">TUM Campus Heilbronn — Foundations and Application of Generative AI (CITHN2014)</div>
+          <span class="edu-date">Mar – Jul 2024</span>
+        </div>
+        <div class="edu-desc">Bachelor-level course by Prof. Chunyang Chen, Chair of Software Engineering & AI. Covered Transformer architecture, LLMs, prompt engineering, fine-tuning, open-source models such as LLaMA, and GenAI security and ethics. Presented GreeterAI at the course's final pitch session.</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-header">
+          <div class="edu-title">Hochschule Heilbronn (HHN) — Autonomous Systems: Deep Learning</div>
+          <span class="edu-date">Mar – Jul 2024</span>
+        </div>
+        <div class="edu-desc">Master-level course in Automotive Systems Engineering by Prof. Nicolaj Stache. Covered neural networks, CNNs, transfer learning, GANs, Transformers, and reinforcement learning, with practical modules in NumPy and TensorFlow.</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-header">
+          <div class="edu-title">SNU by V. Dal, Ukraine — Bachelor of Finance</div>
+          <span class="edu-date">2007–2011</span>
+        </div>
+        <div class="edu-desc">Recognized by ZAB in Germany as fully equivalent to a German university degree.</div>
+      </div>
     </div>
   </section>
 

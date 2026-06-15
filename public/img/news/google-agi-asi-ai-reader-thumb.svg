@@ -14,11 +14,11 @@
   <rect x="94" y="326" width="318" height="16" rx="3" fill="#121212"/>
   <rect x="94" y="360" width="278" height="16" rx="3" fill="#121212"/>
   <rect x="92" y="314" width="340" height="40" rx="4" fill="#ffd84d" opacity="0.86"/>
-  <text x="494" y="104" fill="#00e5c3" font-family="JetBrains Mono, monospace" font-size="28" font-weight="500" letter-spacing="6">AI READING LAYER</text>
+  <text x="494" y="104" fill="#4f8cff" font-family="JetBrains Mono, monospace" font-size="28" font-weight="500" letter-spacing="6">AI READING LAYER</text>
   <text x="494" y="218" fill="#ffffff" font-family="Syne, Arial Black, sans-serif" font-size="110" font-weight="800">AI reads</text>
   <text x="494" y="340" fill="#ffffff" font-family="Syne, Arial Black, sans-serif" font-size="110" font-weight="800">the paper</text>
   <text x="494" y="462" fill="#ffffff" font-family="Syne, Arial Black, sans-serif" font-size="110" font-weight="800">first</text>
-  <rect x="494" y="520" width="522" height="64" rx="12" fill="rgba(0,229,195,0.09)" stroke="rgba(0,229,195,0.3)" stroke-width="2"/>
+  <rect x="494" y="520" width="522" height="64" rx="12" fill="rgba(79,140,255,0.09)" stroke="rgba(79,140,255,0.3)" stroke-width="2"/>
   <text x="522" y="561" fill="#c6cdd6" font-family="JetBrains Mono, monospace" font-size="26">human reader -> AI assistant</text>
   <text x="58" y="674" fill="#8892a0" font-family="JetBrains Mono, monospace" font-size="28">Google DeepMind · From AGI to ASI</text>
 </svg>

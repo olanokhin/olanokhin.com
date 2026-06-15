@@ -1,0 +1,26 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #08090b;
+  --surface: #0f1114;
+  --border: rgba(255,255,255,.07);
+  --border2: rgba(255,255,255,.12);
+  --accent: #4f8cff;
+  --accent-rgb: 79,140,255;
+  --accent2: #1b3f7a;
+  --text: #e8eaed;
+  --muted: #5a6070;
+  --muted2: #8892a0;
+  --tag-bg: rgba(var(--accent-rgb), .07);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}

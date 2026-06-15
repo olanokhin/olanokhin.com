@@ -34,6 +34,11 @@ const title = `${post.data.title} — Alex Anokhin`;
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
     .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--accent); }
+    .nav-toggle { display: none; }
+    .nav-menu-btn { display: none; width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 6px; align-items: center; justify-content: center; cursor: pointer; background: var(--surface); }
+    .nav-menu-btn span, .nav-menu-btn span::before, .nav-menu-btn span::after { display: block; width: 14px; height: 2px; border-radius: 2px; background: var(--text); content: ''; transition: transform .2s, opacity .2s, background .2s; }
+    .nav-menu-btn span::before { transform: translateY(-5px); }
+    .nav-menu-btn span::after { transform: translateY(3px); }
     main { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 116px 24px 100px; }
     .eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
     h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.05; color: #fff; }
@@ -47,12 +52,23 @@ const title = `${post.data.title} — Alex Anokhin`;
     .sources-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 10px; }
     .sources a { display: block; font-size: 11px; color: var(--accent); line-height: 1.7; word-break: break-word; }
     footer { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); }
-    @media (max-width: 600px) { .nav-links { display: none; } }
+    @media (max-width: 600px) {
+      nav { padding: 0 18px; }
+      .nav-menu-btn { display: flex; }
+      .nav-links { position: absolute; top: 52px; left: 0; right: 0; display: grid; gap: 0; padding: 8px 18px 16px; background: rgba(8,9,11,.97); border-bottom: 1px solid var(--border); transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
+      .nav-links a { display: block; padding: 13px 0; font-size: 11px; color: var(--muted2); }
+      .nav-toggle:checked ~ .nav-links { transform: translateY(0); opacity: 1; pointer-events: auto; }
+      .nav-toggle:checked + .nav-menu-btn span { background: transparent; }
+      .nav-toggle:checked + .nav-menu-btn span::before { background: var(--accent); transform: translateY(0) rotate(45deg); }
+      .nav-toggle:checked + .nav-menu-btn span::after { background: var(--accent); transform: translateY(-2px) rotate(-45deg); }
+    }
   </style>
 </head>
 <body>
   <nav>
     <a href="/" class="nav-logo">Alex <span>Anokhin</span></a>
+    <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Toggle navigation" />
+    <label class="nav-menu-btn" for="nav-toggle" aria-hidden="true"><span></span></label>
     <ul class="nav-links">
       <li><a href="/">About</a></li>
       <li><a href="/projects">Projects</a></li>
